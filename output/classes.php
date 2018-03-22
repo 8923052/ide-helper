@@ -1,4 +1,5 @@
 <?php
+use Swoole\Coroutine as Co;
 
 class swoole_server extends Swoole\Server
 {

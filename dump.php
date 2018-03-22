@@ -348,7 +348,7 @@ class ExtensionDocument
          * 获取所有类
          */
         $classes = $this->rf_ext->getClasses();
-        $class_alias = "<?php\n";
+        $class_alias = "<?php\nuse Swoole\Coroutine as Co;\n";
         foreach ($classes as $className => $ref)
         {
             //命名空间
