@@ -2,16 +2,16 @@
 namespace Swoole;
 
 /**
- * @since 1.9.19
+ * @since 2.1.2-alpha
  */
-class Mysql
+class MySQL
 {
     const STATE_QUERY = 0;
     const STATE_READ_START = 1;
     const STATE_READ_FIELD  = 2;
     const STATE_READ_ROW = 3;
-    const STATE_READ_END = 4;
-    const STATE_CLOSED = 5;
+    const STATE_READ_END = 5;
+    const STATE_CLOSED = 6;
 
     public $serverInfo;
     public $sock;
@@ -22,6 +22,8 @@ class Mysql
     public $connect_error;
     public $insert_id;
     public $affected_rows;
+    public $onConnect;
+    public $onClose;
 
     /**
      * @return mixed
@@ -57,13 +59,6 @@ class Mysql
      * @return mixed
      */
     public function rollback($callback){}
-
-    /**
-     * @param $string[required]
-     * @param $flags[optional]
-     * @return mixed
-     */
-    public function escape($string, $flags=null){}
 
     /**
      * @param $sql[required]

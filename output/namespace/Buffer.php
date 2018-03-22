@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 1.9.19
+ * @since 2.1.2-alpha
  */
 class Buffer
 {
@@ -67,6 +67,16 @@ class Buffer
      * @return mixed
      */
     public function clear(){}
+
+    /**
+     * @return mixed
+     */
+    public function __sleep(){}
+
+    /**
+     * @return mixed
+     */
+    public function __wakeup(){}
 
 
 }

@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 1.9.19
+ * @since 2.1.2-alpha
  */
 class Server
 {
@@ -201,6 +201,13 @@ class Server
     public function taskWaitMulti($tasks, $timeout=null){}
 
     /**
+     * @param $tasks[required]
+     * @param $timeout[optional]
+     * @return mixed
+     */
+    public function taskCo($tasks, $timeout=null){}
+
+    /**
      * @param $data[required]
      * @return mixed
      */
@@ -289,11 +296,11 @@ class Server
     public function defer($callback){}
 
     /**
+     * @param $message[required]
      * @param $dst_worker_id[required]
-     * @param $data[required]
      * @return mixed
      */
-    public function sendMessage($dst_worker_id, $data){}
+    public function sendMessage($message, $dst_worker_id){}
 
     /**
      * @param $process[required]
@@ -307,17 +314,21 @@ class Server
     public function stats(){}
 
     /**
-     * @param $port[optional]
-     * @return mixed
-     */
-    public function getSocket($port=null){}
-
-    /**
      * @param $fd[required]
      * @param $uid[required]
      * @return mixed
      */
     public function bind($fd, $uid){}
+
+    /**
+     * @return mixed
+     */
+    public function __sleep(){}
+
+    /**
+     * @return mixed
+     */
+    public function __wakeup(){}
 
 
 }

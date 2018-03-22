@@ -2,7 +2,7 @@
 namespace Swoole\Server;
 
 /**
- * @since 1.9.19
+ * @since 2.1.2-alpha
  */
 class Port
 {
@@ -22,6 +22,7 @@ class Port
     public $type;
     public $sock;
     public $setting;
+    public $connections;
 
     /**
      * @return mixed
@@ -49,7 +50,12 @@ class Port
     /**
      * @return mixed
      */
-    public function getSocket(){}
+    public function __sleep(){}
+
+    /**
+     * @return mixed
+     */
+    public function __wakeup(){}
 
 
 }

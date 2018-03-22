@@ -2,11 +2,15 @@
 namespace Swoole;
 
 /**
- * @since 1.9.19
+ * @since 2.1.2-alpha
  */
 class Process
 {
     const IPC_NOWAIT = 256;
+    const PIPE_MASTER = 1;
+    const PIPE_WORKER = 2;
+    const PIPE_READ = 3;
+    const PIPE_WRITE = 4;
 
     public $pipe;
     public $callback;
@@ -62,10 +66,10 @@ class Process
     public static function daemon($nochdir=null, $noclose=null){}
 
     /**
-     * @param $cpu_settings[required]
+     * @param $seconds[required]
      * @return mixed
      */
-    public static function setaffinity($cpu_settings){}
+    public function setTimeout($seconds){}
 
     /**
      * @param $key[optional]

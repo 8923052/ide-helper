@@ -2,7 +2,7 @@
 namespace Swoole;
 
 /**
- * @since 1.9.19
+ * @since 2.1.2-alpha
  */
 class Client
 {
@@ -10,6 +10,9 @@ class Client
     const MSG_PEEK = 2;
     const MSG_DONTWAIT = 64;
     const MSG_WAITALL = 256;
+    const SHUT_RDWR = 2;
+    const SHUT_RD = 0;
+    const SHUT_WR = 1;
 
     public $errCode;
     public $sock;
@@ -18,14 +21,13 @@ class Client
     public $type;
     public $id;
     public $setting;
+    public $onConnect;
+    public $onError;
     public $onReceive;
+    public $onClose;
     public $onBufferFull;
     public $onBufferEmpty;
     public $onSSLReady;
-    public $onError;
-    public $onMessage;
-    public $onConnect;
-    public $onClose;
 
     /**
      * @param $type[required]
@@ -111,6 +113,12 @@ class Client
     public function resume(){}
 
     /**
+     * @param $how[required]
+     * @return mixed
+     */
+    public function shutdown($how){}
+
+    /**
      * @param $callback[optional]
      * @return mixed
      */
@@ -153,11 +161,6 @@ class Client
      * @return mixed
      */
     public function on($event_name, $callback){}
-
-    /**
-     * @return mixed
-     */
-    public function getSocket(){}
 
 
 }

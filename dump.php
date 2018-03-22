@@ -244,7 +244,7 @@ class ExtensionDocument
         $ns = explode('\\', $classname);
         if (strtolower($ns[0]) != 'swoole')
         {
-            return;
+            //return;
         }
 
         array_walk($ns, function (&$v, $k) use (&$ns)
@@ -253,7 +253,11 @@ class ExtensionDocument
         });
 
 
-        $path = OUTPUT_DIR . '/namespace/' . implode('/', array_slice($ns, 1));
+        if(strtolower($ns[0])=='co'){
+        	$path = OUTPUT_DIR . '/namespace/' . implode('/', $ns);
+        }else{
+        	$path = OUTPUT_DIR . '/namespace/' . implode('/', array_slice($ns, 1));
+        }
 
         $namespace = implode('\\', array_slice($ns, 0, -1));
         $dir = dirname($path);
